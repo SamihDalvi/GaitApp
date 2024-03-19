@@ -1,0 +1,222 @@
+/* style.css */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #F8F9FA;
+    color: #212529;
+}
+
+header {
+    background-color: #0056b3; /* A darker shade for depth */
+    color: #FFFFFF;
+    padding: 15px 50px; /* Increased padding for a better visual appearance */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Subtle shadow for depth */
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto; /* Centering the navbar content */
+}
+
+.nav-links a {
+    color: #FFFFFF;
+    text-decoration: none;
+    margin-left: 30px; /* Increased spacing */
+    padding: 7px 15px; /* Padding for a button-like appearance */
+    border-radius: 5px; /* Rounded corners for the links */
+    transition: background-color 0.3s ease-in-out;
+}
+
+.nav-links a:hover {
+    background-color: rgba(255,255,255,0.2); /* Subtle hover effect */
+}
+
+.container {
+    padding: 20px;
+    margin: 20px auto; /* Center align the containers */
+    max-width: 1200px; /* Setting a max-width for the content */
+    background-color: #FFFFFF; /* Contrasting background for the content */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* Adding shadow for depth */
+    border-radius: 8px; /* Rounded corners */
+}
+
+.graph-placeholder, .analysis-placeholder, .results-placeholder, .tips-placeholder, .settings-placeholder {
+    background-color: #E9ECEF;
+    padding: 30px;
+    margin-top: 20px;
+    border-radius: 5px; /* Rounded corners for the placeholders */
+}
+
+h2 {
+    color: #0056b3; /* Color matching the header */
+    margin-bottom: 20px; /* Added space below headings */
+}
+
+footer {
+    background-color: #0056b3;
+    color: white;
+    text-align: center;
+    padding: 20px 50px;
+    width: 100%;
+    box-shadow: 0 -2px 4px rgba(0,0,0,0.1);
+    position: relative; /* Changed from fixed to relative */
+    margin-top: 30px; /* Added space above the footer */
+    bottom: 0;
+}
+
+/* Responsive design adjustments */
+@media (max-width: 768px) {
+    .nav-links a {
+        margin-left: 10px; /* Smaller margin for smaller devices */
+        padding: 5px 10px; /* Smaller padding */
+    }
+
+    header {
+        padding: 10px 20px; /* Smaller padding on smaller screens */
+    }
+
+    .container {
+        margin: 20px; /* Smaller margin */
+        padding: 15px; /* Smaller padding */
+    }
+}
+
+/* CSS for container */
+.analysis-container {
+    display: flex;
+    flex-direction: row; /* Align boxes horizontally */
+    align-items: flex-start; /* Align boxes to the top */
+    margin-left: 10px;
+}
+
+/* CSS for data boxes */
+.data-box {
+    background-color: #f2f2f2;
+    border-radius: 8px;
+    padding: 20px;
+    margin-top: 20px;
+    width: 200px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.data-box h3 {
+    color: #0056b3;
+    margin-bottom: 10px;
+
+}
+
+.data-box p {
+    color: #333; /* Default color for paragraph */
+}
+
+.data-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.stride-length {
+    background-color: #cce5ff; /* Light blue */
+}
+
+.max-force {
+    background-color: #ffcce5; /* Light pink */
+}
+
+.foot-position {
+    background-color: #e0f7fa; /* Light cyan */
+}
+
+.foot-position-content {
+    font-size: 18px; /* Larger font size */
+    color: #FF6F00; /* Unique and cool color */
+}
+
+/* CSS for buttons */
+.buttons {
+    margin-top: 20px; /* Adjust the top margin as needed */
+    display: flex;
+    justify-content: left; /* Center align buttons */
+}
+
+.buttons button {
+    padding: 10px 20px;
+    margin-right: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff; /* Button color */
+    color: #fff; /* Text color */
+    cursor: pointer;
+}
+
+.buttons button:hover {
+    background-color: #0056b3; /* Darker color on hover */
+}
+
+/* CSS for previous results */
+.results-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.result-item {
+    background-color: #f2f2f2;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.result-item img {
+    max-width: 100%;
+    height: auto;
+}
+
+.result-item p {
+    margin-top: 10px;
+    font-style: italic;
+}
+
+/* CSS for tips and insights */
+.tips-container {
+    text-align: center;
+}
+
+.tips-textbox {
+    background-color: #ffe0b2; /* Light orange background */
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.tips-textbox p {
+    color: #333; /* Default text color */
+    font-style: italic;
+}
+
+/* CSS for settings section */
+.settings-container {
+    text-align: center;
+}
+
+#exit-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #dc3545; /* Red color for the exit button */
+    color: #fff; /* Text color */
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+#exit-button:hover {
+    background-color: #c82333; /* Darker red color on hover */
+}

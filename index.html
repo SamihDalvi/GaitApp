@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gait Analysis App</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <a href="#" class="logo">GaitAnalysis</a>
+            <div class="nav-links">
+                <a href="#real-time">Real-Time Analysis</a>
+                <a href="#previous-results">Previous Results</a>
+                <a href="#tips">Tips & Insights</a>
+                <a href="#settings">Settings</a>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <section id="real-time" class="container">
+            <h2>Real-Time Analysis</h2>
+            <div class="analysis-container">
+                <!-- Placeholder for real-time graph -->
+                <div class="graph-placeholder">
+                    <img src="realtimegraph.png" alt="Real-Time Graph">
+                </div>
+                <!-- Boxes for stride length, max force, and foot position -->
+                <div class="data-boxes">
+                    <div class="data-box stride-length">
+                        <h3>Stride Length</h3>
+                        <p>1.25 meters</p>
+                    </div>
+                    <div class="data-box max-force">
+                        <h3>Max Force</h3>
+                        <p>115 Newtons (Sensor 2)</p>
+                    </div>
+                    <div class="data-box foot-position">
+                        <h3>Foot Position</h3>
+                        <p class="foot-position-content">Mild Eversion Detected!</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Buttons for starting and stopping analysis -->
+            <div class="buttons">
+                <button id="start-analysis">Start Analysis</button>
+                <button id="stop-analysis">Stop Analysis</button>
+            </div>
+        </section>
+        <section id="previous-results" class="container">
+            <h2>Previous Results</h2>
+            <div class="results-grid">
+                <div class="result-item">
+                    <img src="realtimegraph.png" alt="Previous Result">
+                    <p>Mins ago: 10</p>
+                </div>
+                <div class="result-item">
+                    <img src="realtimegraph.png" alt="Previous Result">
+                    <p>Mins ago: 15</p>
+                </div>
+                <div class="result-item">
+                    <img src="realtimegraph.png" alt="Previous Result">
+                    <p>Mins ago: 22</p>
+                </div>
+                <div class="result-item">
+                    <img src="realtimegraph.png" alt="Previous Result">
+                    <p>Mins ago: 30</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="tips" class="container">
+            <h2>Tips & Insights</h2>
+            <div class="tips-container">
+                <div class="tips-textbox">
+                    <p>Recent results show a susceptibility of foot eversion. Seek advice from your physiotherapist for more details.</p>
+                </div>
+            </div>
+        </section>
+        <section id="settings" class="container">
+            <h2>Settings</h2>
+            <div class="settings-container">
+                <!-- Other settings content goes here -->
+                <button id="exit-button">Exit Application</button>
+            </div>
+        </section>
+        
+    </main>
+    <footer>
+        <p>&copy; 2024 GaitAnalysis. All rights reserved.</p>
+    </footer>
+</body>
+</html>
