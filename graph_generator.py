@@ -34,19 +34,18 @@ def moving_average(data, window_size):
 window_size = 5
 
 # Plot the data
-plt.figure(figsize=(10, 6))
+plt.figure(figsize=(8, 5))
 for i in range(4):
     smoothed_data = moving_average(data_storage[i], window_size)
     plt.plot(smoothed_data, label=f'FSR {i}')
 
 plt.title('Smoothed FSR Data Over Time')
-plt.xlabel('Time (arbitrary units)')
+plt.xlabel('Time (s)')
 plt.ylabel('Force Reading')
 plt.legend()
 plt.tight_layout()
 
 # Save the figure
 plt.savefig('realtimegraph.png')
+plt.savefig('realtimegraphextra.png')
 
-# Display the plot
-plt.show()
