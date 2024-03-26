@@ -22,6 +22,15 @@ while time.time() - start_time < duration:
         for i in range(4):
             data_storage[i].append(float(data[i]))
 
+max = 0
+for line in data_storage:
+    for value in line:
+        if value > max:
+            max = value
+
+with open('max_force.txt', 'w') as file:
+    file.write(str(max) + ' N')
+
 # Close the socket
 s.close()
 
@@ -49,3 +58,6 @@ plt.tight_layout()
 plt.savefig('realtimegraph.png')
 plt.savefig('realtimegraphextra.png')
 
+foot_position = "Inversion"
+with open('foot_position.txt', 'w') as file:
+    file.write(foot_position)

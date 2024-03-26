@@ -126,6 +126,10 @@ footer {
 .max-force {
     background-color: #ffcce5; /* Light pink */
 }
+.max-force iframe {
+    width: 150px;
+    height: 40px;
+}
 
 .foot-position {
     background-color: #e0f7fa; /* Light cyan */
@@ -134,6 +138,11 @@ footer {
 .foot-position-content {
     font-size: 18px; /* Larger font size */
     color: #FF6F00; /* Unique and cool color */
+}
+
+.foot-position iframe {
+    width: 150px;
+    height: 40px;
 }
 
 /* CSS for buttons */

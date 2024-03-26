@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gait Analysis App</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../static/styles.css">
 </head>
 <body>
     <header>
@@ -23,7 +23,7 @@
             <h2>Real-Time Analysis</h2>
             <div class="analysis-container">
                 <div class="graph-placeholder">
-                    <img src="realtimegraph.png" alt="Real-Time Graph">
+                    <img src="../realtimegraph.png" alt="Real-Time Graph">
                 <div id="last-updated-time" class="last-updated">Last updated: <span id="update-time">-</span></div>
                 </div>
                 <!-- Boxes for stride length, max force, and foot position -->
@@ -34,12 +34,12 @@
                     </div>
                     <div class="data-box max-force">
                         <h3>Max Force</h3>
-                        <p>115 Newtons (Sensor 2)</p>
+                        <iframe src="../max_force.txt"></iframe>
                     </div>
                     <div class="data-box foot-position">
                         <h3>Foot Position</h3>
-                        <p class="foot-position-content">Mild Eversion Detected!</p>
-                    </div>
+                        <iframe src="../foot_position.txt"></iframe>
+                                           </div>
                 </div>
             </div>
             <!-- Buttons for starting and stopping analysis -->
@@ -52,19 +52,19 @@
             <h2>Previous Results</h2>
             <div class="results-grid">
                 <div class="result-item">
-                    <img src="realtimegraph1.png" alt="Previous Result">
+                    <img src="../realtimegraph1.png" alt="Previous Result">
                     <p>Current Run</p>
                 </div>
                 <div class="result-item">
-                    <img src="realtimegraph2.png" alt="Previous Result">
+                    <img src="../realtimegraph2.png" alt="Previous Result">
                     <p>Last Run</p>
                 </div>
                 <div class="result-item">
-                    <img src="realtimegraph3.png" alt="Previous Result">
+                    <img src="../realtimegraph3.png" alt="Previous Result">
                     <p> Second Last Run</p>
                 </div>
                 <div class="result-item">
-                    <img src="realtimegraph4.png" alt="Previous Result">
+                    <img src="../realtimegraph4.png" alt="Previous Result">
                     <p> Third Last Run</p>
                 </div>
             </div>
@@ -113,25 +113,17 @@
         window.onload = updateLastUpdatedTime;
 
     </script>
-   
-</body>
-<body>
     <script>
-        document.getElementById("start-analysis").addEventListener("click", function() {
-            // Send an AJAX request to the server-side script
-            var xhr = new XMLHttpRequest();
-            xhr.open("GET", "execute_script.php", true);
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState === XMLHttpRequest.DONE) {
-                    if (xhr.status === 200) {
-                        console.log("Shell script executed successfully");
-                    } else {
-                        console.error("Failed to execute shell script");
-                    }
-                }
-            };
-            xhr.send();
-        });
-    </script>
+        function updateFootPosition() {
+            fetch('foot_position.txt')
+                .then(response => response.text())
+                .then(text => {
+                    document.querySelector('.foot-position-content').textContent = text;
+                })
+                .catch(error => console.error('Error loading the foot position data:', error));
+        }
+    
+    </script>    
+   
 </body>
 </html>
