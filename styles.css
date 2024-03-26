@@ -220,3 +220,9 @@ footer {
 #exit-button:hover {
     background-color: #c82333; /* Darker red color on hover */
 }
+
+.last-updated {
+    margin-top: 10px;
+    font-size: 0.9em;
+    color: #666;
+}

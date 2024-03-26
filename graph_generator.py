@@ -34,7 +34,7 @@ def moving_average(data, window_size):
 window_size = 5
 
 # Plot the data
-plt.figure(figsize=(8, 5))
+plt.figure(figsize=(9, 5))
 for i in range(4):
     smoothed_data = moving_average(data_storage[i], window_size)
     plt.plot(smoothed_data, label=f'FSR {i}')

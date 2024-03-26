@@ -22,9 +22,9 @@
         <section id="real-time" class="container">
             <h2>Real-Time Analysis</h2>
             <div class="analysis-container">
-                <!-- Placeholder for real-time graph -->
                 <div class="graph-placeholder">
                     <img src="realtimegraph.png" alt="Real-Time Graph">
+                <div id="last-updated-time" class="last-updated">Last updated: <span id="update-time">-</span></div>
                 </div>
                 <!-- Boxes for stride length, max force, and foot position -->
                 <div class="data-boxes">
@@ -53,19 +53,19 @@
             <div class="results-grid">
                 <div class="result-item">
                     <img src="realtimegraph1.png" alt="Previous Result">
-                    <p>Mins ago: 10</p>
+                    <p>Current Run</p>
                 </div>
                 <div class="result-item">
                     <img src="realtimegraph2.png" alt="Previous Result">
-                    <p>Mins ago: 15</p>
+                    <p>Last Run</p>
                 </div>
                 <div class="result-item">
                     <img src="realtimegraph3.png" alt="Previous Result">
-                    <p>Mins ago: 22</p>
+                    <p> Second Last Run</p>
                 </div>
                 <div class="result-item">
                     <img src="realtimegraph4.png" alt="Previous Result">
-                    <p>Mins ago: 30</p>
+                    <p> Third Last Run</p>
                 </div>
             </div>
         </section>
@@ -90,5 +90,48 @@
     <footer>
         <p>&copy; 2024 GaitAnalysis. All rights reserved.</p>
     </footer>
+    <script>
+        function updateLastUpdatedTime() {
+            const now = new Date();
+            let hours = now.getHours().toString();
+            let minutes = now.getMinutes().toString();
+            let seconds = now.getSeconds().toString();
+            let month = (now.getMonth() + 1 ).toString();
+            let day = now.getDate().toString();
+            let year = now.getFullYear().toString();
+
+            hours = hours.padStart(2, '0');
+            minutes = minutes.padStart(2, '0');
+            seconds = seconds.padStart(2, '0');
+            month = month.padStart(2, '0'); 
+            day = day.padStart(2, '0');
+
+            const updateTimeElement = document.getElementById('update-time');
+            updateTimeElement.textContent = `${year}-${month}-${day}  ${hours}:${minutes}:${seconds}`;
+        }
+
+        window.onload = updateLastUpdatedTime;
+
+    </script>
+   
+</body>
+<body>
+    <script>
+        document.getElementById("start-analysis").addEventListener("click", function() {
+            // Send an AJAX request to the server-side script
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", "execute_script.php", true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    if (xhr.status === 200) {
+                        console.log("Shell script executed successfully");
+                    } else {
+                        console.error("Failed to execute shell script");
+                    }
+                }
+            };
+            xhr.send();
+        });
+    </script>
 </body>
 </html>
