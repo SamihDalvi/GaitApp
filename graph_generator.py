@@ -58,6 +58,22 @@ plt.tight_layout()
 plt.savefig('realtimegraph.png')
 plt.savefig('realtimegraphextra.png')
 
-foot_position = "Inversion"
+# Average force for each sensor
+toe_force = sum(data_storage[0]) / len(data_storage[0])
+medial_heel_force = sum(data_storage[1]) / len(data_storage[1])
+lateral_heel_force = sum(data_storage[3]) / len(data_storage[3])
+
+# Define a threshold for inversion and eversion detection
+force_threshold = 20  # 20N difference to detect inversion or eversion
+
+# Detect foot position
+if lateral_heel_force - medial_heel_force > force_threshold:
+    foot_position = "Inversion"
+elif medial_heel_force - lateral_heel_force > force_threshold:
+    foot_position = "Eversion"
+else:
+    foot_position = "Normal"
+
+# Save the detected foot position to a file
 with open('foot_position.txt', 'w') as file:
     file.write(foot_position)
