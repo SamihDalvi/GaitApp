@@ -42,11 +42,6 @@
                                            </div>
                 </div>
             </div>
-            <!-- Buttons for starting and stopping analysis -->
-            <div class="buttons">
-                <button id="start-analysis">Start Analysis</button>
-                <button id="stop-analysis">Stop Analysis</button>
-            </div>
         </section>
         <section id="previous-results" class="container">
             <h2>Previous Results</h2>
@@ -78,13 +73,6 @@
                 </div>
             </div>
         </section>
-        <section id="settings" class="container">
-            <h2>Settings</h2>
-            <div class="settings-container">
-                <!-- Other settings content goes here -->
-                <button id="exit-button">Exit Application</button>
-            </div>
-        </section>
         
     </main>
     <footer>
@@ -112,26 +100,7 @@
 
         window.onload = updateLastUpdatedTime;
 
-    </script>
-    <script>
-        function updateFootPosition() {
-            fetch('foot_position.txt')
-                .then(response => response.text())
-                .then(text => {
-                    document.querySelector('.foot-position-content').textContent = text;
-                })
-                .catch(error => console.error('Error loading the foot position data:', error));
-        }
-        document.getElementById('start-analysis').addEventListener('click', () => {
-    fetch('http://localhost:8000/start-analysis')
-        .then(response => response.text())
-        .then(text => {
-            console.log(text);
-            updateLastUpdatedTime();  // Update the time to indicate the start of the analysis
-        })
-        .catch(error => console.error('Error starting analysis:', error));
-});
-    </script>    
+    </script> 
    
 </body>
 </html>

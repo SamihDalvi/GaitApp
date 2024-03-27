@@ -35,8 +35,9 @@ for i, line in enumerate(data_storage):
             max_force = value
             max_sensor_index = i
 
+max_sensor_label = ["Toe Sensor", "Lateral Heel Sensor","Backheel Sensor", "Medial Heel Sensor"][max_sensor_index]
 with open('max_force.txt', 'w') as file:
-    file.write(f'Max Force: {max_force} N \n Sensor {max_sensor_index}\n')
+    file.write(f'Max Force: {max_force} N \n'  +  max_sensor_label )
 
 # Close the socket
 s.close()
@@ -44,12 +45,13 @@ s.close()
 # Plot the data
 plt.figure(figsize=(9, 5))
 for i in range(4):
-    plt.plot(data_storage[i], label=f'FSR {i}')
+    plt.plot(data_storage[i], label=["Toe Sensor", "Lateral Heel Sensor","Backheel Sensor", "Medial Heel Sensor"][i])
 
 plt.title('Smoothed FSR Data Over Time')
 plt.xlabel('Time (s)')
 plt.ylabel('Force Reading')
 plt.legend()
+plt.legend(loc='upper left')
 plt.tight_layout()
 
 # Save the figure
@@ -58,16 +60,18 @@ plt.savefig('realtimegraphextra.png')
 
 # Average force for each sensor
 toe_force = sum(data_storage[0]) / len(data_storage[0])
-medial_heel_force = sum(data_storage[1]) / len(data_storage[1])
-lateral_heel_force = sum(data_storage[3]) / len(data_storage[3])
+medial_heel_force = sum(data_storage[3]) / len(data_storage[3])
+lateral_heel_force = sum(data_storage[1]) / len(data_storage[1])
+back_heel_force = sum(data_storage[2]) / len(data_storage[2])
+
 
 # Define a threshold for inversion and eversion detection
-force_threshold = 20  # 20N difference to detect inversion or eversion
+force_threshold = 40  # 20N difference to detect inversion or eversion
 
 # Detect foot position
-if lateral_heel_force - medial_heel_force > force_threshold:
+if (lateral_heel_force - medial_heel_force) > force_threshold and medial_heel_force < 50 :
     foot_position = "Inversion"
-elif medial_heel_force - lateral_heel_force > force_threshold:
+elif medial_heel_force - lateral_heel_force > force_threshold and lateral_heel_force < 60:
     foot_position = "Eversion"
 else:
     foot_position = "Normal"

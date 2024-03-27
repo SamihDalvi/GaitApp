@@ -1,1 +1,2 @@
-255.0 N
+Max Force: 255.0 N 
+Medial Heel Sensor
