@@ -27,31 +27,24 @@ while time.time() - start_time < duration:
         for i in range(4):
             data_storage[i].append(float(data[i]))
 
-max = 0
-for line in data_storage:
+max_force = 0
+max_sensor_index = 0
+for i, line in enumerate(data_storage):
     for value in line:
-        if value > max:
-            max = value
+        if value > max_force:
+            max_force = value
+            max_sensor_index = i
 
 with open('max_force.txt', 'w') as file:
-    file.write(str(max) + ' N')
+    file.write(f'Max Force: {max_force} N \n Sensor {max_sensor_index}\n')
 
 # Close the socket
 s.close()
 
-def moving_average(data, window_size):
-    """Compute the moving average of the given data."""
-    weights = np.ones(window_size) / window_size
-    return np.convolve(data, weights, mode='valid')
-
-# Define the window size for the moving average
-window_size = 5
-
 # Plot the data
 plt.figure(figsize=(9, 5))
 for i in range(4):
-    smoothed_data = moving_average(data_storage[i], window_size)
-    plt.plot(smoothed_data, label=f'FSR {i}')
+    plt.plot(data_storage[i], label=f'FSR {i}')
 
 plt.title('Smoothed FSR Data Over Time')
 plt.xlabel('Time (s)')
