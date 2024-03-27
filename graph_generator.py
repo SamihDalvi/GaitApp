@@ -3,6 +3,11 @@ import matplotlib.pyplot as plt
 import time
 import numpy as np
 
+import http.server
+import socketserver
+import threading
+import os
+
 # Setup the socket client
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 host = '192.168.137.91'  # Raspberry Pi's IP address
@@ -77,3 +82,22 @@ else:
 # Save the detected foot position to a file
 with open('foot_position.txt', 'w') as file:
     file.write(foot_position)
+
+
+class Handler(http.server.SimpleHTTPRequestHandler):
+    def do_GET(self):
+        if self.path == '/start-analysis':
+            self.send_response(200)
+            self.end_headers()
+            self.wfile.write(b'Starting Analysis')
+            os.system('sh run.sh')  # Make sure the path to run.sh is correct
+        else:
+            super().do_GET()
+
+def start_server():
+    with socketserver.TCPServer(("", 8000), Handler) as httpd:
+        print("serving at port", 8000)
+        httpd.serve_forever()
+
+# Start the server in a new thread
+threading.Thread(target=start_server).start()
