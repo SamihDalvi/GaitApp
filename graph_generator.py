@@ -106,5 +106,5 @@ for i, force in enumerate(data_storage[2]):  # Assuming data_storage[2] is the m
 # Calculate and save average stride time
 if stride_times:
     average_stride_time = sum(stride_times) / len(stride_times)
-    with open('average_stride_time.txt', 'w') as file:
-        file.write(f'Average Stride Time: {average_stride_time:.2f} s\n')
+    with open('average_stride_length.txt', 'w') as file:
+        file.write(f'Average Stride Length: {average_stride_time:.2f} m\n')

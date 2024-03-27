@@ -130,6 +130,10 @@ footer {
     width: 200px;
     height: 70px;
 }
+.stride-length iframe {
+    width: 200px;
+    height: 70px;
+}
 
 .foot-position {
     background-color: #e0f7fa; /* Light cyan */

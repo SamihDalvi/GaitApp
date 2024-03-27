@@ -1,2 +1,2 @@
-Max Force: 255.0 N 
-Medial Heel Sensor
+Max Force: 215.0 N 
+Backheel Sensor
