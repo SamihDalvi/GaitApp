@@ -79,3 +79,32 @@ else:
 # Save the detected foot position to a file
 with open('foot_position.txt', 'w') as file:
     file.write(foot_position)
+
+# Analysis
+max_force = 0
+max_sensor_index = 0
+heel_strikes_times = []
+previous_force = 0
+heel_strike_threshold = 50  # Threshold to detect heel strike, needs calibration
+stride_times = []
+
+for i, force in enumerate(data_storage[2]):  # Assuming data_storage[2] is the middle heel sensor
+    if force > max_force:
+        max_force = force
+        max_sensor_index = 2
+
+    # Detect heel strike
+    if force > heel_strike_threshold and previous_force <= heel_strike_threshold:
+        current_time = start_time + i * (duration / len(data_storage[2]))
+        heel_strikes_times.append(current_time)
+        if len(heel_strikes_times) > 1:
+            stride_time = heel_strikes_times[-1] - heel_strikes_times[-2]
+            stride_times.append(stride_time)
+
+    previous_force = force
+
+# Calculate and save average stride time
+if stride_times:
+    average_stride_time = sum(stride_times) / len(stride_times)
+    with open('average_stride_time.txt', 'w') as file:
+        file.write(f'Average Stride Time: {average_stride_time:.2f} s\n')
